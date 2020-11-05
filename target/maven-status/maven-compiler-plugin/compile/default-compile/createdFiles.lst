@@ -3,9 +3,9 @@ phoneseller\PromoCompleted.class
 phoneseller\AbstractEvent$1.class
 phoneseller\PolicyHandler.class
 phoneseller\config\kafka\KafkaProcessor.class
-phoneseller\PromotionApplication.class
-phoneseller\PromotionController.class
+phoneseller\MarketingRepository.class
+phoneseller\Marketing.class
 phoneseller\AbstractEvent.class
+phoneseller\MarketingController.class
 phoneseller\PayCompleted.class
-phoneseller\Promotion.class
-phoneseller\PromotionRepository.class
+phoneseller\MarketingApplication.class

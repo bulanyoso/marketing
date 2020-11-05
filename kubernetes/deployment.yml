@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: promotion
+  name: marketing
   namespace: phone82
   labels:
-    app: promotion
+    app: marketing
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: promotion
+      app: marketing
   template:
     metadata:
       labels:
-        app: promotion
+        app: marketing
     spec:
       containers:
-        - name: promotion
-#          image: username/promotion:latest
-          image: admin02.azurecr.io/promotion:latest
+        - name: marketing
+#          image: username/marketing:latest
+          image: admin02.azurecr.io/marketing:latest
           ports:
             - containerPort: 8080
           env:

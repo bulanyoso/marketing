@@ -5,8 +5,8 @@ import org.springframework.beans.BeanUtils;
 import java.util.List;
 
 @Entity
-@Table(name="Promotion_table")
-public class Promotion {
+@Table(name="Marketing_table")
+public class Marketing {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -18,31 +18,30 @@ public class Promotion {
     @PostPersist
     public void onPostPersist(){
         System.out.println(this.toString());
-        System.out.println("promotion persist");
+        System.out.println("*******************marketing persist******************");
         if(point > 0){
-            System.out.println("비동기어쩌구 결제해서 비동기로 포인트생성~");
-//            PromoCompleted promoCompleted = new PromoCompleted();
-//            BeanUtils.copyProperties(this, promoCompleted);
-//            promoCompleted.publish();
+
+            PromoCompleted promoCompleted = new PromoCompleted();
+            BeanUtils.copyProperties(this, promoCompleted);
+            promoCompleted.publish();
 
         } else {
-            System.out.println("동기화로 결제취소해서 프로모취소~");
-//            PromoCancelled promoCancelled = new PromoCancelled();
-//            BeanUtils.copyProperties(this, promoCancelled);
-//            promoCancelled.publish();
+            PromoCancelled promoCancelled = new PromoCancelled();
+            BeanUtils.copyProperties(this, promoCancelled);
+            promoCancelled.publish();
 
         }
     }
 
     @PreUpdate
     public void onPreUpdate(){
-        System.out.println("promotion update");
+        System.out.println("marketing update");
     }
 
     @PostRemove
     public void onPostRemove(){
 
-        System.out.println("promotion remove");
+        System.out.println("marketing remove");
     }
 
     public Long getId() {
@@ -77,7 +76,7 @@ public class Promotion {
 
     @Override
     public String toString() {
-        return "Promotion{" +
+        return "Marketing{" +
                 "id=" + id +
                 ", orderId=" + orderId +
                 ", point=" + point +
