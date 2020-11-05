@@ -12,20 +12,24 @@ public class Marketing {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private Long orderId;
-    private Double point;
     private String process;
+    private Double point;
 
     @PostPersist
     public void onPostPersist(){
         System.out.println(this.toString());
-        System.out.println("*******************marketing persist******************");
+        System.out.println("**marketing persist 시작**");
+
+
         if(point > 0){
 
             PromoCompleted promoCompleted = new PromoCompleted();
             BeanUtils.copyProperties(this, promoCompleted);
             promoCompleted.publish();
 
-        } else {
+        }
+        else
+            {
             PromoCancelled promoCancelled = new PromoCancelled();
             BeanUtils.copyProperties(this, promoCancelled);
             promoCancelled.publish();
